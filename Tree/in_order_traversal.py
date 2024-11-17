@@ -22,31 +22,31 @@ nodeB.left = nodeE
 nodeB.right = nodeF
 nodeF.left = nodeG
 
-def preorder_using_stack(root):
+
+def inorder_using_stack(root):
     result = []
     stack = []
-    stack.append(root)
+    current = root
     
-    while len(stack) > 0:
-        node = stack.pop()
-        result.append(node.data)
-        if node.right:
-            stack.append(node.right)
-        if node.left:
-            stack.append(node.left)
+    while current or len(stack) > 0:
+        while current:
+            stack.append(current)
+            current = current.left
+        current = stack.pop()
+        result.append(current.data)
+        current = current.right
     return result
     
-def preOrderTraversal(root):
+def inOrderTraversal(root):
     arr = []
     def traversal(node):
       if node is None:
         return
-      arr.append(node.data)
       traversal(node.left)
+      arr.append(node.data)
       traversal(node.right)
     traversal(root)
     return arr
-
         
-print(preOrderTraversal(root))
-print(preorder_using_stack(root))
+print(inOrderTraversal(root))
+print(inorder_using_stack(root))
