@@ -4,6 +4,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 root = TreeNode('R')
 nodeA = TreeNode('A')
 nodeB = TreeNode('B')
